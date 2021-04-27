@@ -1,0 +1,161 @@
+html,
+body {
+    font-family: 'Signika', sans-serif;
+    font-size: 14px;
+}
+
+
+/* Reset Css */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+
+/* Header */
+
+#header {
+    height: 68px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px 10px 30px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 25px;
+    margin-right: 10px;
+}
+
+.logo h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0;
+    color: #03015d;
+}
+
+.nav-right .user-name {
+    text-transform: capitalize;
+    font-size: 20px;
+    color: #c4c4c4;
+    margin-right: 50px;
+}
+
+.nav-right .info-user {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right .user-avatar {
+    width: 50px;
+}
+
+.nav-right .user-avatar img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+
+/* Body content */
+
+#sidebar {
+    border-right: 1px solid #ebebeb;
+    padding: 40px 20px;
+    margin: 0 -15px;
+}
+
+#sidebar .sidebar-title {
+    margin-bottom: 10px;
+}
+
+#sidebar .sidebar-title p {
+    color: #c4c4c4;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.sidebar-nav li {
+    margin-bottom: 10px;
+    padding: 10px 30px 10px 10px;
+    transition: linear 0.3s;
+}
+
+.sidebar-nav .sidebar-nav-link {
+    text-decoration: none;
+    font-size: 18px;
+    color: #c4c4c4;
+}
+
+.sidebar-nav .sidebar-nav-icon {
+    font-size: 18px;
+    color: #c4c4c4;
+    margin-right: 15px;
+}
+
+.sidebar-nav li.sidebar-nav-item--active,
+.sidebar-nav li.sidebar-nav-item--active .sidebar-nav-link,
+.sidebar-nav li.sidebar-nav-item--active .sidebar-nav-icon {
+    color: #332a7c;
+    background: #ededf4;
+    border-radius: 7px;
+}
+
+.sidebar-nav li:hover {
+    background: #ededf4;
+    border-radius: 7px;
+}
+
+
+/* Main content */
+
+#main-content {
+    padding: 40px 45px;
+    margin: 0 -15px;
+}
+
+.main-content-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-content-head__left {
+    display: flex;
+}
+
+.main-content-head__left-title {
+    font-size: 47px;
+    color: #03015d;
+    font-weight: 700;
+}
+
+.main-content-head__right .main-content-head__right--btn-add {
+    padding: 10px 40px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.main-content-head__right--btn-add-icon {
+    font-size: 12px;
+}
