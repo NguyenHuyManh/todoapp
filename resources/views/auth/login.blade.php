@@ -8,10 +8,9 @@
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('To-do-app/css/grid.css') }}">
+    <link rel="stylesheet" href="{{ asset('To-do-app/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('To-do-app/css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('To-do-app/css/responsive.css') }}">
 
@@ -33,13 +32,13 @@
                 @csrf
                 <div class="form-login-right__input">
                     <div class="form-group">
-                        <input type="email" name="email" class="form-control" placeholder="Enter email" id="email">
+                        <input type="email" name="email" class="form-input" placeholder="Enter email" id="email">
                         @error('email')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-control" placeholder="Enter password" id="pwd">
+                        <input type="password" name="password" class="form-input" placeholder="Enter password" id="pwd">
                         @error('password')
                         <div class="alert alert-danger">{{ $message }}</div>
                         @enderror
@@ -47,33 +46,24 @@
                 </div>
 
                 <div class="form-login-right__action">
-                    <button type="submit" class="btn-block form-login-right__action-submit">Login</button>
-                    <div class="form-login-right__action-forgot-password">
-                        <p>Forgot your password ?</p>
-                        <a href="">Forgot Password</a>
-                    </div>
+                    <button type="submit" class="btn btn-block form-login-right__action-submit">Login</button>
                     @if (session('error'))
                         <div class="alert alert-danger" style="text-align: center">
                             {{ session('error')}}
                         </div>
                     @endif
+                    <div class="form-login-right__action-forgot-password">
+                        <p>Forgot your password ?</p>
+                        <a href="">Forgot Password</a>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 
 
-
 </div>
 
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-<!-- Popper JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-<!-- Latest compiled JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

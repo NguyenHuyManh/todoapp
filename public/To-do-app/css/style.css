@@ -41,6 +41,7 @@ p {
 .logo {
     display: flex;
     align-items: center;
+    margin-left: 8px;
 }
 
 .logo img {
@@ -55,35 +56,59 @@ p {
     color: #03015d;
 }
 
-.nav-right .user-name {
+.nav-right .user {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.nav-right .user-info-name {
     text-transform: capitalize;
     font-size: 20px;
     color: #c4c4c4;
     margin-right: 50px;
+    cursor: pointer;
 }
 
-.nav-right .info-user {
-    display: flex;
-    align-items: center;
-}
-
-.nav-right .user-avatar {
+.nav-right .user-info-avatar {
     width: 50px;
 }
 
-.nav-right .user-avatar img {
+.nav-right .user-info-avatar img {
     width: 100%;
     height: auto;
     border-radius: 5px;
 }
 
+.dropdown-menu-user-info{
+    position: absolute;
+    left: 0;
+    top: 50px;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e2e0e0;
+    display: none;
+}
 
+.dropdown-menu-user-info ul li{
+    padding: 15px 30px;
+    transition: linear 0.3s;
+}
+
+.dropdown-menu-user-info ul li:hover{
+    background-color: #e2e0e0;
+}
+
+.dropdown-menu-user-info-item{
+    font-size: 14px;
+    color: #9a9a9a;
+}
 /* Body content */
 
 #sidebar {
     border-right: 1px solid #ebebeb;
     padding: 40px 20px;
-    margin: 0 -15px;
 }
 
 #sidebar .sidebar-title {
@@ -104,7 +129,7 @@ p {
 
 .sidebar-nav .sidebar-nav-link {
     text-decoration: none;
-    font-size: 18px;
+    font-size: 16px;
     color: #c4c4c4;
 }
 
@@ -132,7 +157,6 @@ p {
 
 #main-content {
     padding: 40px 45px;
-    margin: 0 -15px;
 }
 
 .main-content-head {
@@ -142,6 +166,15 @@ p {
 
 .main-content-head__left {
     display: flex;
+    position: relative;
+}
+
+.main-content-head__left-number {
+    position: absolute;
+    right: -30px;
+    bottom: 10px;
+    font-size: 20px;
+    color: #c4c4c4;
 }
 
 .main-content-head__left-title {
@@ -153,9 +186,12 @@ p {
 .main-content-head__right .main-content-head__right--btn-add {
     padding: 10px 40px;
     font-size: 16px;
-    font-weight: 700;
+    font-weight: 600;
+    background: #03015d;
+    color: #fff;
 }
 
 .main-content-head__right--btn-add-icon {
     font-size: 12px;
 }
+

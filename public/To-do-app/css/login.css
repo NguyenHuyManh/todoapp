@@ -4,24 +4,23 @@
     box-sizing: border-box;
 }
 
+html, body{
+    font-family: 'Rubik', sans-serif;
+}
+
 p {
     margin: 0;
 }
 
 #wrapper {
     background-color: #c4c4c4;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    top: 0;
-    right: 0;
     display: flex;
     justify-content: center;
+    min-height: 100vh;
 }
 
 #form-login,
 #form-register {
-    width: 710px;
     margin: auto;
     display: flex;
     background: #fff;
@@ -105,7 +104,6 @@ p {
     font-weight: 500;
     background: #03015d;
     color: #fff;
-    border: none;
     padding: 9px;
     border-radius: 7px;
     margin-bottom: 10px;
