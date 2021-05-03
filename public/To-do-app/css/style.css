@@ -70,6 +70,16 @@ p {
     cursor: pointer;
 }
 
+.user-info-name i {
+    margin-left: 15px;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.user-info-name i.down-icon {
+    transform: rotate(-180deg);
+}
+
 .nav-right .user-info-avatar {
     width: 50px;
 }
@@ -80,7 +90,7 @@ p {
     border-radius: 5px;
 }
 
-.dropdown-menu-user-info{
+.dropdown-menu-user-info {
     position: absolute;
     left: 0;
     top: 50px;
@@ -91,19 +101,21 @@ p {
     display: none;
 }
 
-.dropdown-menu-user-info ul li{
-    padding: 15px 30px;
+.dropdown-menu-user-info ul li {
+    padding: 15px 35px;
     transition: linear 0.3s;
 }
 
-.dropdown-menu-user-info ul li:hover{
+.dropdown-menu-user-info ul li:hover {
     background-color: #e2e0e0;
 }
 
-.dropdown-menu-user-info-item{
+.dropdown-menu-user-info-item {
     font-size: 14px;
     color: #9a9a9a;
 }
+
+
 /* Body content */
 
 #sidebar {
@@ -125,6 +137,7 @@ p {
     margin-bottom: 10px;
     padding: 10px 30px 10px 10px;
     transition: linear 0.3s;
+    display: flex;
 }
 
 .sidebar-nav .sidebar-nav-link {
@@ -152,6 +165,20 @@ p {
     border-radius: 7px;
 }
 
+.date-icon {
+    width: 17px;
+    height: 17px;
+    border: 2px solid #c4c4c4;
+    line-height: 17px;
+    text-align: center;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    color: #c4c4c4;
+    margin-right: 15px;
+    font-size: 10px;
+}
+
 
 /* Main content */
 
@@ -162,6 +189,7 @@ p {
 .main-content-head {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 40px;
 }
 
 .main-content-head__left {
@@ -195,3 +223,184 @@ p {
     font-size: 12px;
 }
 
+.main-content-body {
+    margin: 0 -10px;
+}
+
+.main-content-body .task-item {
+    background: #fff;
+    box-shadow: 0 2px 4px 1px #c7c0c0;
+    border-radius: 15px;
+    margin: 0px 10px 20px 10px;
+    padding: 20px;
+}
+
+.task-head {
+    display: flex;
+    justify-content: space-between;
+}
+
+.task-head .task-title p {
+    font-size: 20px;
+    color: #535353;
+    font-weight: 800;
+}
+
+.task-head .task-icon-delete {
+    font-size: 16px;
+    color: #535353;
+    cursor: pointer;
+}
+
+.task-body {
+    height: 110px;
+    margin-top: 15px;
+    padding: 0 20px 5px 0;
+}
+
+.task-body .task-description {
+    font-size: 14px;
+    color: #4e4d4d;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.task-action {
+    display: flex;
+    font-size: 16px;
+    color: #4a4a4a;
+    font-weight: 600;
+}
+
+.task-action .task-improtance-icon,
+.task-action .task-complete-icon {
+    font-size: 18px;
+}
+
+.task-action .task-improtance-icon {
+    margin-left: 30px;
+}
+
+.task-action .task-complete-icon {
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: #37782c;
+}
+
+.orange {
+    color: orange;
+}
+
+.gray {
+    color: #8b8b8b;
+}
+
+.main-content-head__right--btn-add-mobile {
+    display: none;
+}
+
+
+/* Responsive */
+
+.nav-bar-mobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60%;
+    background: #fff;
+    z-index: 1;
+    transform: translateX(-100%);
+    transition: linear 0.2s;
+}
+
+.nav-bar-mobile__head {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ebebeb;
+}
+
+.nav-bar-mobile-list {
+    margin-top: 20px;
+}
+
+.nav-bar-mobile-list li,
+.nav-bar-mobile__user-info li {
+    margin-bottom: 20px;
+}
+
+.nav-bar-mobile--link {
+    color: #333;
+    text-decoration: none;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+.nav-bar-mobile--icon {
+    margin-right: 15px;
+}
+
+.nav-bar-mobile__close-icon {
+    color: #333;
+    font-size: 18px;
+}
+
+.nav-bar-btn {
+    display: none;
+}
+
+.nav-bar-icon {
+    font-size: 24px;
+    color: #03015d;
+}
+
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    animation: fade-in linear 0.2s;
+}
+
+.nav-input {
+    display: none;
+}
+
+.nav-input:checked~.nav-bar-mobile {
+    transform: translateX(0);
+}
+
+.nav-input:checked~.nav-overlay {
+    display: block;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+ul.nav-bar-mobile__user-info {
+    border-top: 1px solid #ebebeb;
+}
+
+.nav-bar-mobile__user-info li:first-child {
+    font-size: 18px;
+    padding: 10px 15px;
+    border-bottom: 1px solid #ebebeb;
+    background: #e8dcdc;
+}
