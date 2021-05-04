@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 Route::group(['prefix' => '/'], function () {
     Route::get('/', [
         'as' => 'home',
@@ -23,10 +20,55 @@ Route::group(['prefix' => '/'], function () {
         'middleware' => 'checkLogin'
     ]);
 
+    Route::post('add-task', [
+        'as' => 'task.store',
+        'uses' => 'HomeController@store'
+    ]);
+
+    Route::get('delete-task/{id}', [
+        'as' => 'task.destroy',
+        'uses' => 'HomeController@destroy'
+    ]);
+
+    Route::get('update-task/{id}', [
+        'as' => 'task.update',
+        'uses' => 'HomeController@update'
+    ]);
+
     Route::get('in-progress', [
         'as' => 'in-progress',
         'uses' => 'HomeController@inProgress',
-        'middleware' => 'checkLogin'
+    ]);
+
+    Route::get('completed', [
+        'as' => 'completed',
+        'uses' => 'HomeController@completed',
+    ]);
+
+    Route::get('today', [
+        'as' => 'today',
+        'uses' => 'HomeController@today',
+    ]);
+
+    Route::get('tomorow', [
+        'as' => 'tomorow',
+        'uses' => 'HomeController@tomorow',
+    ]);
+
+    Route::get('month', [
+        'as' => 'month',
+        'uses' => 'HomeController@month',
+    ]);
+
+    // Profile
+    Route::get('profile', [
+        'as' => 'profile',
+        'uses' => 'AuthController@profile',
+    ]);
+
+    Route::post('profile-update', [
+        'as' => 'profile.update',
+        'uses' => 'AuthController@profileUpdate',
     ]);
 });
 

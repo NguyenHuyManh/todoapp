@@ -1,5 +1,7 @@
-.form-group{
+.form-group {
     margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .form-input {
@@ -14,6 +16,11 @@
     background-color: #fff;
     border: 1px solid #ced4da;
     border-radius: 5px;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #80bdff;
 }
 
 .btn {
@@ -31,6 +38,14 @@
     cursor: pointer;
 }
 
-.btn-block{
+.btn-block {
     width: 100%;
+}
+
+textarea.form-input {
+    height: auto;
+}
+
+select.form-input {
+    height: auto;
 }

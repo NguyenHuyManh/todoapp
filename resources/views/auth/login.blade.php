@@ -33,25 +33,14 @@
                 <div class="form-login-right__input">
                     <div class="form-group">
                         <input type="email" name="email" class="form-input" placeholder="Enter email" id="email">
-                        @error('email')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" class="form-input" placeholder="Enter password" id="pwd">
-                        @error('password')
-                        <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="password" name="password" class="form-input" placeholder="Enter password" id="pwd">                 
                     </div>
                 </div>
 
                 <div class="form-login-right__action">
                     <button type="submit" class="btn btn-block form-login-right__action-submit">Login</button>
-                    @if (session('error'))
-                        <div class="alert alert-danger" style="text-align: center">
-                            {{ session('error')}}
-                        </div>
-                    @endif
                     <div class="form-login-right__action-forgot-password">
                         <p>Forgot your password ?</p>
                         <a href="">Forgot Password</a>

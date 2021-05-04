@@ -125,6 +125,7 @@ p {
 
 #sidebar .sidebar-title {
     margin-bottom: 10px;
+    padding: 3px 10px;
 }
 
 #sidebar .sidebar-title p {
@@ -160,6 +161,11 @@ p {
     border-radius: 7px;
 }
 
+.sidebar-nav li.sidebar-nav-item--active .date-icon {
+    color: #332a7c;
+    border: 2px solid #332a7c;
+}
+
 .sidebar-nav li:hover {
     background: #ededf4;
     border-radius: 7px;
@@ -177,6 +183,20 @@ p {
     color: #c4c4c4;
     margin-right: 15px;
     font-size: 10px;
+}
+
+.date-icon-nav-mobile {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #c4c4c4;
+    line-height: 16px;
+    text-align: center;
+    /* display: flex;
+    align-items: center;
+    justify-content: center; */
+    color: #c4c4c4;
+    font-size: 10px;
+    margin-left: 15px;
 }
 
 
@@ -307,6 +327,131 @@ p {
 }
 
 
+/* Modal Add Task */
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    z-index: 1;
+    visibility: hidden;
+    opacity: 0;
+    transition: linear 0.2s;
+}
+
+.modal-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.modal-add-task {
+    width: 350px;
+    margin: auto;
+    background: #fff;
+    z-index: 5;
+    border-radius: 10px;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+}
+
+.modal-close .modal-close-icon {
+    font-size: 22px;
+    color: #c4c4c4;
+    cursor: pointer;
+}
+
+.modal-add-task__form {
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.modal-add-task__form .form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.modal-add-task__form .form-group h3 {
+    font-size: 19px;
+    font-weight: 100;
+    color: #4a4a4a;
+    margin-bottom: 7px;
+}
+
+.modal-add-task__form .form-group .title-input,
+.modal-add-task__form .form-group .date-time-input {
+    padding: 10px;
+    height: 20px;
+}
+
+.modal-add-task__form .form-group .description-input,
+.select-important {
+    padding: 10px;
+}
+
+.btn-add-task {
+    background: #1e1d58;
+    color: #fff;
+    width: 100%;
+    padding: 12px 15px;
+}
+
+
+/* Update Profile */
+
+.update-profile h2 {
+    font-size: 40px;
+    color: #03015d;
+    margin-bottom: 20px;
+}
+
+.profile-user__avatar {
+    width: 80px;
+    height: 85px;
+}
+
+.profile-user__avatar img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.update-profile .profile-user .form-group {
+    width: 40%;
+}
+
+.update-profile .profile-user .form-input {
+    padding: 10px;
+    height: 25px;
+    color: #0c0c0c;
+    font-size: 15px;
+}
+
+.update-profile .profile-user .choose-file {
+    background: #03015d;
+    padding: 5px 10px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.btn-save-profile {
+    background: #03015d;
+    color: #fff;
+    width: 100%;
+    padding: 13px 10px;
+}
+
+
 /* Responsive */
 
 .nav-bar-mobile {
@@ -332,13 +477,19 @@ p {
     margin-top: 20px;
 }
 
+.nav-bar-mobile-list li {
+    display: flex;
+    align-items: center;
+    color: #c4c4c4;
+}
+
 .nav-bar-mobile-list li,
 .nav-bar-mobile__user-info li {
     margin-bottom: 20px;
 }
 
 .nav-bar-mobile--link {
-    color: #333;
+    color: #c4c4c4;
     text-decoration: none;
     padding: 10px 15px;
     font-size: 16px;

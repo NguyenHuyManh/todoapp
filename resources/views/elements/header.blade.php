@@ -2,8 +2,12 @@
     <div class="grid">
         <div class="header-content">
             <div class="logo">
-                <img src="{{ asset('To-do-app/images/logo.476fe07d.svg') }}" alt="">
-                <h3>Todo App</h3>
+                <a href="{{url('/')}}">
+                    <img src="{{ asset('To-do-app/images/logo.476fe07d.svg') }}" alt="">
+                </a>
+                <a href="{{url('/')}}">
+                    <h3>Todo App</h3>
+                </a>
             </div>
             <div class="nav-right">
                 <div class="user">
@@ -11,13 +15,13 @@
                         <p class="user-info-name">{{ Auth::user()->name }}<i class="fas fa-angle-down"></i></p>
                         <div class="dropdown-menu-user-info">
                             <ul>
-                                <li><a class="dropdown-menu-user-info-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-menu-user-info-item" href="{{ route('profile') }}">Profile</a></li>
                                 <li><a class="dropdown-menu-user-info-item" href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="user-info-avatar">
-                        <img src="{{ asset('To-do-app/images/avatar.png') }}" alt="">
+                        <img src="{{ asset('storage') }}/{{Auth::user()->avatar}}" alt="">
                     </div>
                 </div>
             </div>
@@ -57,19 +61,16 @@
                         </a>
                     </li>
                     <li>
-                        <a href="" class="nav-bar-mobile--link">
-                            <i class="fas fa-desktop nav-bar-mobile--icon"></i>
-                            Today</a>
+                        <div class="date-icon-nav-mobile">0</div>
+                        <a href="" class="nav-bar-mobile--link">Today</a> 
                     </li>
                     <li>
-                        <a href="" class="nav-bar-mobile--link">
-                            <i class="fas fa-desktop nav-bar-mobile--icon"></i>Tommorow
-                        </a>
+                        <div class="date-icon-nav-mobile">1</div>
+                        <a href="" class="nav-bar-mobile--link">Tommorow</a>
                     </li>
                     <li>
-                        <a href="" class="nav-bar-mobile--link">
-                            <i class="fas fa-desktop nav-bar-mobile--icon"></i>Month
-                        </a>
+                        <div class="date-icon-nav-mobile">30</div>
+                        <a href="" class="nav-bar-mobile--link">Month</a>
                     </li>
                 </ul>
                 <ul class="nav-bar-mobile__user-info">

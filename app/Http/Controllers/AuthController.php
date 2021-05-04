@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AuthController extends Controller
 {
@@ -42,5 +45,34 @@ class AuthController extends Controller
         Auth::logout();
 
         return redirect()->route('login');
+    }
+
+    // Profile
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('auth.profile', compact('user'));
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        $userId = User::find(Auth::user()->id);
+
+        if ($request->hasFile('avatar')) {
+            $path = $request->file('avatar')->store('avatars');
+            $userId->avatar = $path;
+        }
+
+        $userId->name = $request->name;
+        $userId->email = $request->email;
+        
+        if ($request->password) {
+            $userId->password = Hash::make($request->password);
+        }
+
+        $userId->save();
+
+
+        return redirect()->route('home');
     }
 }
