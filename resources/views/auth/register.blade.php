@@ -18,41 +18,55 @@
 
 <body>
 
-<div id="wrapper">
-    <div id="form-register">
-        <div class="form-register-right">
-            <h3 class="form-register-right--title">Sign Up</h3>
-            <p class="form-register-right--desc">Register and create an account on Todo List.Write your tasks anytime and anywhere</p>
+    <div id="wrapper">
+        <div id="form-register">
+            <div class="form-register-right">
+                <h3 class="form-register-right--title">Sign Up</h3>
+                <p class="form-register-right--desc">Register and create an account on Todo List.Write your tasks
+                    anytime and anywhere</p>
 
-            <p class="form-register-right--sign-up">Already have an account ?
-                <a href="{{ route('login') }}">Login</a>
-            </p>
-        </div>
-        <div class="form-register-left">
-            <form action="">
-                <div class="form-register-left__input">
-                    <div class="form-group">
-                        <input type="text" class="form-input" placeholder="Username" id="username">
+                <p class="form-register-right--sign-up">Already have an account ?
+                    <a href="{{ route('login') }}">Login</a>
+                </p>
+            </div>
+            <div class="form-register-left">
+                <form action="{{ route('register.post') }}" method="POST">
+                    @csrf
+                    <div class="form-register-left__input">
+                        <div class="form-group">
+                            <input type="text" name="name" class="form-input" placeholder="Username" id="username">
+                            @error('name')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-input" placeholder="Email" id="email">
+                            @error('email')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-input" placeholder="Password" id="pwd">
+                            @error('password')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password_confirm" class="form-input" placeholder="Password Confirm" id="pwd">
+                            @error('password_confirm')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <input type="email" class="form-input" placeholder="Email" id="email">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-input" placeholder="Password" id="pwd">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-input" placeholder="Password Confirm" id="pwd">
-                    </div>
-                </div>
 
-                <div class="form-register-left__action">
-                    <button type="submit" class="btn btn-block form-register-left__action-submit">Sign Up</button>
-                </div>
-            </form>
+                    <div class="form-register-left__action">
+                        <button type="submit" class="btn btn-block form-register-left__action-submit">Sign Up</button>
+                    </div>
+                </form>
+            </div>
         </div>
+
     </div>
-
-</div>
 
 </body>
 

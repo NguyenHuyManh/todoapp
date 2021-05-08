@@ -36,6 +36,23 @@ $(document).ready(function() {
         $('.modal ').css("visibility", "hidden");
     });
 
+    // Show image before upload
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                $('.imgOutput').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $(".imgInput").change(function() {
+        readURL(this);
+    });
+
     // Delete Task
     $(document).on('click', '.delete-task', function(event) {
         event.preventDefault();

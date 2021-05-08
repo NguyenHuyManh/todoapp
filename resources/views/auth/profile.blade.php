@@ -8,11 +8,15 @@
             @csrf
             <div class="form-group">
                 <div class="profile-user__avatar">
-                    <img src="{{ asset('storage') }}/{{$user->avatar}}" alt="" class="">
+                    @if ($user->avatar)
+                    <img src="{{ asset('storage') }}/{{$user->avatar}}" alt="" class="imgOutput">
+                    @else
+                    <img src="{{ asset('To-do-app/images/avatar.png') }}" alt="" class="imgOutput">
+                    @endif                 
                 </div>
             </div>
             <div class="form-group">
-                <input class="form-input-file" type="file" name="avatar" id="img" style="display: none">
+                <input class="form-input-file imgInput" type="file" name="avatar" id="img" style="display: none">
                 <label for="img" class="choose-file">Choose a file</label>
             </div>
 

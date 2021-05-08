@@ -15,13 +15,18 @@
                         <p class="user-info-name">{{ Auth::user()->name }}<i class="fas fa-angle-down"></i></p>
                         <div class="dropdown-menu-user-info">
                             <ul>
-                                <li><a class="dropdown-menu-user-info-item" href="{{ route('profile') }}">Profile</a></li>
+                                <li><a class="dropdown-menu-user-info-item" href="{{ route('profile') }}">Profile</a>
+                                </li>
                                 <li><a class="dropdown-menu-user-info-item" href="{{ route('logout') }}">Logout</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="user-info-avatar">
+                        @if (Auth::user()->avatar)
                         <img src="{{ asset('storage') }}/{{Auth::user()->avatar}}" alt="">
+                        @else
+                        <img src="{{ asset('To-do-app/images/avatar.png') }}" alt="">
+                        @endif
                     </div>
                 </div>
             </div>
@@ -62,7 +67,7 @@
                     </li>
                     <li>
                         <div class="date-icon-nav-mobile">0</div>
-                        <a href="" class="nav-bar-mobile--link">Today</a> 
+                        <a href="" class="nav-bar-mobile--link">Today</a>
                     </li>
                     <li>
                         <div class="date-icon-nav-mobile">1</div>
