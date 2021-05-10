@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"/>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -39,7 +39,8 @@
                             <input type="password" name="password" class="form-input" placeholder="Enter password"
                                 id="pwd">
                         </div>
-                        <div class="error-password" style="text-align: center;margin-bottom: 6px;text-align: center"></div>
+                        <div class="error-password" style="text-align: center;margin-bottom: 6px;text-align: center">
+                        </div>
                     </div>
 
                     <div class="form-login-right__action">
@@ -59,8 +60,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('.error-email').hide();
-            $('.error-password').hide();
             $('#btn-login').submit(function(event) {
                 event.preventDefault();
 
@@ -79,17 +78,17 @@
                     },
                     dataType: 'json',
                     success: function(data) {
-                        $('.error-email').hide();
-                        $('.error-password').hide();
-                        if (data.status == 'false') {
-                            if (data.message.email) {
-                                $('.error-email').show();
-                                $('.error-email').text(data.message.email);
-                            }
+                        if (data.status == 'false') {                                              
                             if (data.message.password) {
-                                $('.error-password').show();
-                                $('.error-password').text(data.message.password);
+                                toastr.warning('',data.message.password,{
+                                    progressBar:true,
+                                });
                             }
+                            if (data.message.email) {
+                                toastr.warning('',data.message.email,{
+                                    progressBar:true,
+                                });
+                            }  
                         }
                         if(data.login == 'fail')
                         {

@@ -41,13 +41,11 @@ class AuthController extends Controller
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
             return response()->json(['login' => 'success']);
-            // return redirect()->route('home');
         } else {
             return response()->json([
                 'login' => 'fail',
                 'message' => 'Email hoặc mật khẩu không đúng!',
             ]);
-            // return back()->with('error', 'Email hoặc mật khẩu không đúng!');
         }
     }
 
@@ -58,7 +56,8 @@ class AuthController extends Controller
 
     public function postRegister(Request $request)
     {
-        $request->validate(
+        $validator = Validator::make(
+            $request->all(),
             [
                 'name' => 'required',
                 'email' => 'required|unique:users',
@@ -75,6 +74,14 @@ class AuthController extends Controller
             ]
         );
 
+        if($validator->fails())
+        {
+            return response()->json([
+                'status' => 'false',
+                'message' => $validator->errors(),
+            ]);
+        }
+
         User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -82,7 +89,7 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return redirect()->route('home');
+            return response()->json(['register' => 'success']);
         }
     }
 

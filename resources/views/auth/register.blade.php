@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -30,44 +31,92 @@
                 </p>
             </div>
             <div class="form-register-left">
-                <form action="{{ route('register.post') }}" method="POST">
+                <form action="{{ route('register.post') }}" method="POST" id="btn-register">
                     @csrf
                     <div class="form-register-left__input">
                         <div class="form-group">
                             <input type="text" name="name" class="form-input" placeholder="Username" id="username">
-                            @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="email" name="email" class="form-input" placeholder="Email" id="email">
-                            @error('email')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
                         </div>
                         <div class="form-group">
                             <input type="password" name="password" class="form-input" placeholder="Password" id="pwd">
-                            @error('password')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                           
                         </div>
                         <div class="form-group">
-                            <input type="password" name="password_confirm" class="form-input" placeholder="Password Confirm" id="pwd">
-                            @error('password_confirm')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                            @enderror
+                            <input type="password" name="password_confirm" class="form-input" placeholder="Password Confirm" id="pwd-confirm">
                         </div>
                     </div>
-
                     <div class="form-register-left__action">
                         <button type="submit" class="btn btn-block form-register-left__action-submit">Sign Up</button>
                     </div>
                 </form>
             </div>
         </div>
-
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#btn-register').submit(function(event) {
+                event.preventDefault();
+
+                var url = $(this).attr('action');
+                var name = $('#username').val();
+                var email = $('#email').val();
+                var password = $('#pwd').val();
+                var password_confirm = $('#pwd-confirm').val();
+                var _token = $("input[name=_token]").val();
+
+
+                $.ajax({
+                    url: url,
+                    type: 'POST',
+                    data: {
+                        _token: _token,
+                        email: email,
+                        password: password,
+                        name: name,
+                        password_confirm: password_confirm
+                    },
+                    dataType: 'json',
+                    success: function(data) {
+                        if (data.status == 'false') {
+                            if (data.message.password_confirm) {
+                                toastr.warning('',data.message.password_confirm,{
+                                    progressBar:true,
+                                });
+                            }                                                                                   
+                            if (data.message.password) {
+                                toastr.warning('',data.message.password,{
+                                    progressBar:true,
+                                });
+                            }
+                            if (data.message.email) {
+                                toastr.warning('',data.message.email,{
+                                    progressBar:true,
+                                });
+                            } 
+                            if (data.message.name) {
+                                toastr.warning('',data.message.name,{
+                                    progressBar:true,
+                                });
+                            } 
+                        }
+                        if(data.register == 'success')
+                        {
+                            window.location.href = "{{ route('home') }}";
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
